@@ -8,14 +8,19 @@ import {
   Put,
   Delete,
   Param,
+  UseInterceptors,
+  UploadedFile,
 } from '@nestjs/common';
 import { Product } from '@prisma/client';
 import { Roles } from 'src/decorators/roles.decorator';
 import { RolesGuard } from 'src/guards/roles.guard';
 import { Role } from '@prisma/client';
+import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
+import { CreateProductDto, UpdateProductDto } from 'src/dto/product.dto';
+import { FileInterceptor } from '@nestjs/platform-express';
 
-@Controller('product')
-@UseGuards(RolesGuard)
+@Controller('products')
+@UseGuards(RolesGuard, JwtAuthGuard)
 export class ProductController {
   constructor(private readonly productService: ProductService) {}
 
@@ -24,26 +29,41 @@ export class ProductController {
     return this.productService.getAllProducts();
   }
 
+  @Get(':id')
+  findOne(@Param('id') id: string) {
+    return this.productService.findOne(+id);
+  }
+
+  @UseGuards(JwtAuthGuard, RolesGuard)
   @Roles(Role.ADMIN)
   @Post() //POST /product
-  createProduct(
-    @Body() productData: { name: string; description: string; price: number },
-  ): Promise<Product> {
-    return this.productService.createProduct(productData);
+  @UseInterceptors(FileInterceptor('image'))
+  create(
+    @Body() createProductDto: CreateProductDto,
+    @UploadedFile() file: Express.Multer.File,
+  ) {
+    createProductDto.image = file.path;
+    return this.productService.create(createProductDto);
   }
 
   @Roles(Role.ADMIN)
   @Put(':id')
-  updateProduct(
-    @Param('id') id: string,
-    @Body() productData: { name: string; description: string; price: number },
-  ): Promise<Product> {
-    return this.productService.updateProduct(+id, productData);
+  @UseInterceptors(FileInterceptor('image'))
+  update(
+    @Param('id') id: number,
+    @Body() updateProductDto: UpdateProductDto,
+    @UploadedFile() file: Express.Multer.File,
+  ) {
+    if (file) {
+      updateProductDto.image = file.path;
+    }
+    return this.productService.update(+id, updateProductDto);
   }
 
+  @UseGuards(JwtAuthGuard, RolesGuard)
   @Roles(Role.ADMIN)
   @Delete(':id')
   deleteProduct(@Param('id') id: string): Promise<Product> {
-    return this.productService.deleteProduct(+id);
+    return this.productService.delete(+id);
   }
 }
