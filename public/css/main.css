@@ -1,0 +1,111 @@
+body{
+    background-image: url(/css/images/fashion-portrait-beautiful-young-blonde-woman-white-shirt-studio-gray-background-52375494.webp);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    background: rgba(108, 109, 110, 0.8); 
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(199, 189, 189, 0.1);
+    width: 400px;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+h2 {
+    margin-top: 0;
+    text-align: center;
+    color: rgb(239, 241, 243);
+    font-size: 30px;
+}
+
+label {
+    display: block;
+    margin-bottom:25px;
+    color: #faf7f7;
+    font-size: 20px;
+}
+
+input[type="text"], input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #dab40d;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 16px;
+    margin-top: 15px;
+}
+
+button:hover {
+    background-color: #d6bb40;
+}
+
+p {
+    text-align: center;
+    color: aliceblue;
+}
+
+a {
+    color: #041e3a;
+    text-decoration: none;
+}
+
+@media (min-width: 320px) {
+    .container {
+        width: 70%; /* Adjust the width to be more flexible */
+        height: auto; /* Let the height adjust to the content */
+        padding: 15px;
+    }
+
+    h2 {
+        font-size: 24px; /* Adjust the font size for smaller screens */
+    }
+
+    label {
+        font-size: 16px; /* Adjust the font size for smaller screens */
+        margin-bottom: 15px;
+    }
+
+    button {
+        font-size: 14px; /* Adjust the font size for smaller screens */
+        padding: 8px;
+    }
+}
+
+@media (min-width: 576px) {
+    
+}
+
+@media (min-width: 992px) {
+    .container {
+        width: 50%; 
+        height: auto; 
+        padding: 15px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .container {
+        width: 40%; 
+        height: auto; 
+        padding: 15px;
+    }
+}

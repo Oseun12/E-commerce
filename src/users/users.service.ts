@@ -19,9 +19,13 @@ export class UsersService {
   }
 
   async findByEmail(email: string): Promise<User | null> {
-    return this.databaseService.user.findUnique({ where: { email } });
+    if (!email) {
+      throw new Error('Email is required');
+    }
+    return this.databaseService.user.findUnique({
+      where: { email },
+    });
   }
-
   async createUser(userData: {
     email: string;
     password: string;
