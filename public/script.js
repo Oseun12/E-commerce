@@ -84,7 +84,9 @@ document.addEventListener('DOMContentLoaded', () => {
   } else {
     console.error('Login form not found');
   }
+});
 
+document.addEventListener('DOMContentLoaded', () => {
   const languageDropdown = document.getElementById('language-dropdown');
   const currencyDropdown = document.getElementById('currency-dropdown');
 
