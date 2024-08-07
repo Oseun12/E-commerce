@@ -58,7 +58,7 @@
 <!-- Nav section -->
     <nav>
         <a href="/">HOME</a>
-        <a href="">SHOP</a>
+        <a href="/shop.html">SHOP</a>
         <a href="/cart.html">CART</a>
         <a href="/order.html">ORDER</a>
         <a href="/product.html">ADD PRODUCT</a>
@@ -84,52 +84,7 @@
       </div>
 
 
-      <script>
-        document.getElementById('product-form').addEventListener('submit', async (event) => {
-          event.preventDefault();
-    
-          const form = event.target;
-          const formData = new FormData(form);
-    
-          try {
-            const token = localStorage.getItem('jwtToken'); // Retrieve the token from local storage
-    
-            if (!token) {
-            alert('No token found. Please login.');
-            window.location.href = '/login.html';
-            return;
-            }
-                const response = await fetch('http://localhost:3000/products', {
-              method: 'POST',
-              headers: {
-                'Authorization': `Bearer ${token}`
-              },
-              body: formData
-            });
-    
-            if (response.ok) {
-              const result = await response.json();
-              alert('Product added successfully!');
-              console.log('Product added:', result);
-              window.location.href = '/products.html';
-            } else {
-              const error = await response.json();
-              alert('Failed to add product: ' + error.message);
-            }
-          } catch (error) {
-            console.error('Error:', error);
-            alert('An error occurred while adding the product.');
-          }
-
-        const token = localStorage.getItem('jwtToken');
-        const payload = JSON.parse(atob(token.split('.')[1]));
-
-        if (payload.role !== 'admin') {
-            alert('Access denied.');
-            window.location.href = '/'; // Redirect non-admin users
-        }
-        });
-      </script>
+      <script src="product.js"></script>
       
     </body>
 </html>

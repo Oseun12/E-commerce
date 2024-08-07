@@ -148,7 +148,65 @@ nav a {
 }
 
 
-
+/* Container styling */
+.container {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    background-color: #c6a8e9;
+  }
+  
+  /* Form heading styling */
+  .container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+    font-family: 'Arial', sans-serif;
+  }
+  
+  /* Form styling */
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* Label styling */
+  label {
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #333;
+    font-family: 'Arial', sans-serif;
+  }
+  
+  /* Input field styling */
+  input[type="text"],
+  input[type="file"] {
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    font-family: 'Arial', sans-serif;
+  }
+  
+  /* Submit button styling */
+  button[type="submit"] {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #050b58;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    font-family: 'Arial', sans-serif;
+  }
+  
+  button[type="submit"]:hover {
+    background-color: #433f72;
+  }
+  
 
 
 @media (min-width: 320px) {

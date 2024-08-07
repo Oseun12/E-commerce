@@ -1,18 +1,20 @@
-document.addEventListener('DOMContentLoaded', () => {
-  const token = localStorage.getItem('jwtToken');
-  const payload = JSON.parse(atob(token.split('.')[1]));
-
-  if (payload.role !== 'admin') {
-    alert('Access denied.');
-    window.location.href = '/';
-  }
-
-  const productForm = document.getElementById('product-form');
-  productForm.addEventListener('submit', async (event) => {
+document
+  .getElementById('product-form')
+  .addEventListener('submit', async (event) => {
     event.preventDefault();
-    const formData = new FormData(productForm);
+
+    const form = event.target;
+    const formData = new FormData(form);
 
     try {
+      const token = localStorage.getItem('jwtToken'); // Retrieve the token from local storage
+
+      if (!token) {
+        alert('No token found. Please login.');
+        window.location.href = '/login.html';
+        return;
+      }
+
       const response = await fetch('/products', {
         method: 'POST',
         headers: {
@@ -22,14 +24,16 @@ document.addEventListener('DOMContentLoaded', () => {
       });
 
       if (response.ok) {
-        alert('Product created successfully!');
-        window.location.reload();
+        const result = await response.json();
+        alert('Product added successfully!');
+        console.log('Product added:', result);
+        window.location.href = '/product.html';
       } else {
-        alert('Failed to create product.');
+        const error = await response.json();
+        alert('Failed to add product: ' + error.message);
       }
     } catch (error) {
       console.error('Error:', error);
-      alert('An error occurred.');
+      alert('An error occurred while adding the product.');
     }
   });
-});

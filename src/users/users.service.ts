@@ -26,13 +26,13 @@ export class UsersService {
       where: { email },
     });
   }
-  async createUser(userData: {
+  async createUser(data: {
     email: string;
     password: string;
     role: Role;
   }): Promise<User> {
     return this.databaseService.user.create({
-      data: userData,
+      data: data,
     });
   }
 

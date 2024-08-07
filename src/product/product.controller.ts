@@ -34,6 +34,7 @@ export class ProductController {
     return this.productService.findOne(+id);
   }
 
+  @UseGuards(JwtAuthGuard, RolesGuard)
   @Roles(Role.ADMIN)
   @Post() //POST /product
   @UseInterceptors(FileInterceptor('image'))

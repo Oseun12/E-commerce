@@ -10,6 +10,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { JwtStrategy } from './jwt.strategy';
 import { DatabaseModule } from 'src/database/database.module';
 import { JwtAuthGuard } from './jwt-auth.guard';
+import { SessionSerializer } from './session-serializer';
 
 @Module({
   imports: [
@@ -24,8 +25,15 @@ import { JwtAuthGuard } from './jwt-auth.guard';
       inject: [ConfigService],
     }),
     DatabaseModule,
+    UsersModule,
   ],
-  providers: [AuthService, LocalStrategy, JwtStrategy, JwtAuthGuard],
+  providers: [
+    AuthService,
+    LocalStrategy,
+    JwtStrategy,
+    JwtAuthGuard,
+    SessionSerializer,
+  ],
   controllers: [AuthController],
   exports: [AuthService, JwtModule, JwtAuthGuard],
 })
