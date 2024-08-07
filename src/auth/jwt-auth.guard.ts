@@ -1,18 +1,37 @@
+// src/auth/jwt-auth.guard.ts
 import {
   Injectable,
   ExecutionContext,
   UnauthorizedException,
 } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
+import { JwtService } from '@nestjs/jwt';
+import { Reflector } from '@nestjs/core';
 
 @Injectable()
 export class JwtAuthGuard extends AuthGuard('jwt') {
-  async canActivate(context: ExecutionContext): Promise<boolean> {
-    const request = context.switchToHttp().getRequest();
-    console.log('Request user:', request.user); // Debug log
-    if (!request.user) {
-      throw new UnauthorizedException();
+  constructor(
+    private jwtService: JwtService,
+    private reflector: Reflector,
+  ) {
+    super();
+  }
+
+  canActivate(context: ExecutionContext) {
+    const isPublic = this.reflector.getAllAndOverride<boolean>('isPublic', [
+      context.getHandler(),
+      context.getClass(),
+    ]);
+    if (isPublic) {
+      return true;
     }
-    return (await super.canActivate(context)) as boolean;
+    return super.canActivate(context);
+  }
+
+  handleRequest(err, user) {
+    if (err || !user) {
+      throw err || new UnauthorizedException();
+    }
+    return user;
   }
 }

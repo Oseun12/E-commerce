@@ -1,0 +1,406 @@
+@media (min-width: 320px) {
+    #social-media{
+        margin: 10px 0;
+        border-radius: 10px;
+        margin-top: 5px;    
+    }
+    #social-media img {
+        width: 10px;
+    }
+    .sub-banner img {
+        width: 100%; 
+        margin: 0 auto; 
+        height: 400px; 
+
+    }
+}   
+
+@media (min-width: 400px) {
+    #social-media{
+        margin: 10px 0;
+        border-radius: 10px;
+        margin-top: 5px;    
+    }
+    #social-media img {
+        width: 20px;
+    }
+
+    .dropdown {
+        margin-left: 20px;
+        gap: 10px;
+    }
+    .login-detail {
+        margin-left: 50px;
+        font-size: 10px;
+        margin-top: 5px;
+    }
+    .Discover {
+        margin-left: 20px;
+        width: 110px;
+    }
+    .About {
+        margin-left: 160px;
+        width: 80px;
+    }
+    .Resources {
+        margin-left: 260px;
+    }
+}
+
+
+@media(min-width: 576px) {
+    .dropdown {
+        margin-left: 50px;
+        gap: 10px;
+    }
+    .login-detail {
+        margin-left: 160px;
+        font-size: 10px;
+        margin-top: 5px;
+    }
+    /* Hero section */
+    
+    #hero img{
+        width: 100%;
+        height: 500px;
+        border-radius: 20px;
+        align-content: center;
+        display: flex;
+        justify-content: center;
+    }
+    .sub-banner img {
+        width: 80%; 
+        margin: 0 auto; 
+        height: 400px; 
+
+    }
+    .about {
+        margin-left: 60px;
+    }
+
+    .Discover {
+        margin-left: 50px;
+        width: 110px;
+    }
+    .About {
+        margin-left: 230px;
+        width: 120px;
+    }
+    .Resources {
+        margin-left: 400px;
+    }
+}
+
+@media(min-width: 768px) {
+    #social-media{
+        margin: 10px 0;
+        border-radius: 10px;
+        margin-top: 5px;    
+    }
+    #social-media img {
+        width: 30px;
+    }
+
+    .dropdown {
+        margin-left: 50px;
+        gap: 10px;
+    }
+    .dropbtn {
+        padding: 10px;
+    }
+    .login-detail {
+        margin-left: 250px;
+        font-size: 10px;
+        margin-top: 5px;
+    }
+    .signup {
+        padding: 10px;
+    }
+    .login {
+        padding: 10px;
+    }
+    
+    .icon-container {
+        margin-left: 250px;
+    
+    }
+    
+    .icon-container i {
+        font-size: 30px;     
+    }
+    nav {
+        font-size: 15px;
+    }
+    .sidebar {
+        width: 140px;
+
+    }
+    .sidebar ul li a {
+        font-size: 12px;
+
+    }
+
+    
+    #new-arrivals {
+        margin-left: 150px;
+    }
+
+    #Trending {
+         margin-left: 150px;
+    }
+
+    #sidebar2 {
+        width: 120px;
+    }
+    .side-goods img {
+        width: 70px;
+    }
+
+    .skin-care {
+        margin-top: -355px;
+    }
+    .skin-care-content {
+        flex-direction: row; /* Place items side by side horizontally */
+        justify-content: center;
+        align-items: center;
+    }
+
+    .skin-care-content img {
+        margin-right: 40px; 
+        margin-bottom: 20px; 
+        width: 300px; 
+        border-radius: 10px;
+    }
+
+    .text-content {
+        align-items: flex-start; /* Align text content to the start */
+        text-align: left; 
+        width: 100px;
+    }
+
+    .sub-banner img {
+        width: 80%; 
+        margin: 0 auto; 
+        height: 400px; 
+    }
+
+    .about {
+        margin-left: 160px;
+    }
+
+    .Discover {
+        margin-left: 100px;
+        width: 110px;
+    }
+    .About {
+        margin-left: 350px;
+        width: 120px;
+    }
+    .Resources {
+        margin-left: 550px;
+    }
+    
+}
+
+@media (min-width: 992px) {
+
+    .login-detail {
+        margin-left: 500px;
+        font-size: 10px;
+        margin-top: 5px;
+    }
+    .signup {
+        padding: 10px;
+    }
+    .login {
+        padding: 10px;
+    }
+    .search-container {
+        left: 70px;
+    }
+    .search-container input {
+        padding: 10px;
+    }
+
+    .search-container i {
+        left: 600px;
+        color: #430c77;
+    }
+    
+    nav {
+        font-size: 20px;
+        gap: 50px;
+    }
+    
+    #hero img {
+        width: 90%; 
+        margin: 0 auto; 
+        height: 400px;     
+    }
+
+    .sidebar {
+        width: 160px;
+
+    }
+    .sidebar ul li a {
+        font-size: 15px;
+
+    }
+
+    
+    #new-arrivals {
+        margin-left: 170px;
+    }
+
+    #Trending {
+         margin-left: 170px;
+    }
+
+    #sidebar2 {
+        width: 120px;
+    }
+    .side-goods img {
+        width: 70px;
+    }
+
+    .skin-care {
+        margin-top: -355px;
+    }
+    .skin-care-content {
+        flex-direction: row; /* Place items side by side horizontally */
+        justify-content: center;
+        align-items: center;
+    }
+
+    .skin-care-content img {
+        margin-right: 40px; 
+        margin-bottom: 20px; 
+        width: 400px; 
+        border-radius: 10px;
+    }
+
+    .text-content {
+        align-items: flex-start; /* Align text content to the start */
+        text-align: left; 
+        width: 100px;
+    }
+    .text-content p {
+        font-size: 15px;
+        margin: 0 0 10px 0;
+    }
+    .text-content .old-price {
+        font-size: 13px;
+        text-decoration: line-through;
+        margin-right: 5px;
+    }
+    
+    .text-content .new-price {
+        font-size: 18px;
+        color: #f5973f;
+    }
+
+    .sub-banner img {
+        width: 80%; 
+        margin: 0 auto; 
+        height: 400px; 
+    }
+
+    .about {
+        margin-left: 260px;
+    }
+
+    .Discover {
+        margin-left: 200px;
+        width: 110px;
+    }
+    .About {
+        margin-left: 450px;
+        width: 120px;
+    }
+    .Resources {
+        margin-left: 650px;
+    }
+}
+
+@media(min-width: 1200px) {
+    .login-detail {
+        margin-left: 700px;
+        font-size: 10px;
+        margin-top: 5px;
+    }
+
+    .search-container i {
+        left: 800px;
+        color: #430c77;
+    }
+    .card-content {
+        font-size: 20px;
+    }
+    .rating {
+        font-size: 15px;
+        color: #FFD700;
+    }
+    .add-to-cart {
+        padding: 10px;
+    }
+
+    .about {
+        margin-left: 360px;
+    }
+
+    .Discover {
+        margin-left: 300px;
+        width: 110px;
+    }
+    .About {
+        margin-left: 550px;
+        width: 120px;
+    }
+    .Resources {
+        margin-left: 750px;
+    }
+}
+
+@media (min-width: 1400px) {
+    .login-detail {
+        margin-left: 900px;
+        font-size: 10px;
+        margin-top: 5px;
+    }
+
+    .search-container i {
+        left: 1000px;
+        color: #430c77;
+    }
+    .skin-care {
+        margin-top: -355px;
+    }
+    .skin-care-content {
+        flex-direction: row; /* Place items side by side horizontally */
+        justify-content: center;
+        align-items: center;
+    }
+
+    .skin-care-content img {
+        margin-right: 40px; 
+        margin-bottom: 20px; 
+        width: 500px; 
+        border-radius: 10px;
+    }
+
+    .about {
+        margin-left: 480px;
+    }
+
+    .Discover {
+        margin-left: 400px;
+        width: 110px;
+    }
+    .About {
+        margin-left: 650px;
+        width: 120px;
+    }
+    .Resources {
+        margin-left: 850px;
+    }
+}

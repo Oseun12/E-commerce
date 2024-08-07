@@ -34,7 +34,6 @@ export class ProductController {
     return this.productService.findOne(+id);
   }
 
-  @UseGuards(JwtAuthGuard, RolesGuard)
   @Roles(Role.ADMIN)
   @Post() //POST /product
   @UseInterceptors(FileInterceptor('image'))
@@ -42,7 +41,9 @@ export class ProductController {
     @Body() createProductDto: CreateProductDto,
     @UploadedFile() file: Express.Multer.File,
   ) {
-    createProductDto.image = file.path;
+    if (file) {
+      createProductDto.image = file.path; // Adjust this based on where and how you store the file
+    }
     return this.productService.create(createProductDto);
   }
 
@@ -60,7 +61,6 @@ export class ProductController {
     return this.productService.update(+id, updateProductDto);
   }
 
-  @UseGuards(JwtAuthGuard, RolesGuard)
   @Roles(Role.ADMIN)
   @Delete(':id')
   deleteProduct(@Param('id') id: string): Promise<Product> {

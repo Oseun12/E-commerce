@@ -1,42 +1,21 @@
-import {
-  Injectable,
-  CanActivate,
-  ExecutionContext,
-  ForbiddenException,
-} from '@nestjs/common';
-import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
+
+import { Injectable, CanActivate, ExecutionContext } from '@nestjs/common';
 import { Reflector } from '@nestjs/core';
-import { ROLES_KEY } from 'src/decorators/roles.decorator';
+import { Role } from '@prisma/client';
 
 @Injectable()
-export class RolesGuard extends JwtAuthGuard implements CanActivate {
-  constructor(private reflector: Reflector) {
-    super();
-  }
+export class RolesGuard implements CanActivate {
+  constructor(private reflector: Reflector) {}
 
-  async canActivate(context: ExecutionContext): Promise<boolean> {
-    // First, ensure the user is authenticated
-    const isAuthenticated = await super.canActivate(context);
-    if (!isAuthenticated) {
-      return false;
-    }
-
-    // Retrieve roles metadata and user roles
-    const requiredRoles = this.reflector.get<string[]>(
-      ROLES_KEY,
-      context.getHandler(),
-    );
-    if (!requiredRoles) {
-      return true; // No roles required, allow access
+  canActivate(context: ExecutionContext): boolean {
+    const roles = this.reflector.get<Role[]>('roles', context.getHandler());
+    if (!roles) {
+      return true;
     }
 
     const request = context.switchToHttp().getRequest();
     const user = request.user;
 
-    if (!user || !requiredRoles.some((role) => user.role.includes(role))) {
-      throw new ForbiddenException('Forbidden resource');
-    }
-
-    return true;
+    return roles.includes(user.role);
   }
 }

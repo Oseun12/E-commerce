@@ -22,6 +22,8 @@ model User {
   updatedAt DateTime @updatedAt
 
   Order Order[]
+
+  Cart Cart[]
 }
 
 enum Role {
@@ -52,4 +54,26 @@ model Order {
   product Product @relation(fields: [productId], references: [id])
   user    User    @relation(fields: [userId], references: [id])
 
+}
+
+model Cart {
+  id Int @id @default(autoincrement())
+  userId Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  items     CartItem[] @relation("CartItems")
+
+
+  user User @relation(fields: [userId], references: [id])
+
+}
+
+model CartItem {
+  id        Int      @id @default(autoincrement())
+  cartId    Int
+  productId Int
+  quantity  Int
+  cart      Cart     @relation("CartItems", fields: [cartId], references: [id])
+  // createdAt DateTime @default(now())
+  // updatedAt DateTime @updatedAt
 }

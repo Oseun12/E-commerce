@@ -11,6 +11,9 @@ import { ConfigModule } from '@nestjs/config';
 import { ProductModule } from './product/product.module';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path';
+import { CartModule } from './cart/cart.module';
+import { APP_GUARD } from '@nestjs/core';
+import { JwtAuthGuard } from './auth/jwt-auth.guard';
 
 @Module({
   imports: [
@@ -24,15 +27,19 @@ import { join } from 'path';
     ServeStaticModule.forRoot({
       rootPath: join(__dirname, '..', 'public'), // Path to your frontend files
     }),
-
     AuthModule,
     ProductModule,
     DatabaseModule,
     OrdersModule,
     UsersModule,
     ConfigModule,
+    CartModule,
   ],
   controllers: [AppController],
-  providers: [AppService, ProductService],
+  providers: [
+    AppService,
+    ProductService,
+    { provide: APP_GUARD, useClass: JwtAuthGuard },
+  ],
 })
 export class AppModule {}

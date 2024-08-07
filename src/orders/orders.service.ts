@@ -11,7 +11,7 @@ export class OrdersService {
     quantity: number;
     userId: number;
   }): Promise<Order> {
-    const product = await this.databaseService.product.findUnique({
+    const product = await this.databaseService.findUniqueProduct({
       where: { id: data.productId },
     });
 
@@ -20,16 +20,14 @@ export class OrdersService {
     }
     const totalPrice = product.price * data.quantity;
 
-    return this.databaseService.create({
-      data: {
-        ...data,
-        totalPrice,
-      },
+    return this.databaseService.createOrder({
+      ...data,
+      totalPrice,
     });
   }
 
   async deleteOrder(id: number): Promise<Order> {
-    return this.databaseService.order.delete({
+    return this.databaseService.deleteOrder({
       where: { id },
     });
   }

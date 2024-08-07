@@ -70,8 +70,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const data = await response.json();
         if (response.ok) {
           showToast('Login successful', 'success');
+          // Store the token in localStorage
+          localStorage.setItem('jwtToken', data.token);
           setTimeout(() => {
-            window.location.href = '/shop.html';
+            window.location.href = '/product.html';
           }, 1000);
         } else {
           showToast(data.message || 'Login failed', 'error');
@@ -84,69 +86,4 @@ document.addEventListener('DOMContentLoaded', () => {
   } else {
     console.error('Login form not found');
   }
-});
-
-document.addEventListener('DOMContentLoaded', () => {
-  const languageDropdown = document.getElementById('language-dropdown');
-  const currencyDropdown = document.getElementById('currency-dropdown');
-
-  languageDropdown.addEventListener('click', (event) => {
-    if (event.target.tagName === 'A') {
-      const selectedLanguage = event.target.getAttribute('data-lang');
-      console.log('Selected language:', selectedLanguage);
-      // Here you can add the functionality to change the language
-    }
-  });
-
-  currencyDropdown.addEventListener('click', (event) => {
-    if (event.target.tagName === 'A') {
-      const selectedCurrency = event.target.getAttribute('data-currency');
-      console.log('Selected currency:', selectedCurrency);
-      // Here you can add the functionality to change the currency
-    }
-  });
-
-  const showAllButtons = document.querySelectorAll('.show-all');
-
-  showAllButtons.forEach((button) => {
-    button.addEventListener('click', (event) => {
-      const section = event.target.closest('.product-section');
-      const itemsContainer = section.querySelector('.items');
-      itemsContainer.style.display =
-        itemsContainer.style.display === 'none' ||
-        itemsContainer.style.display === ''
-          ? 'block'
-          : 'none';
-    });
-  });
-
-  document
-    .getElementById('productForm')
-    .addEventListener('submit', async (event) => {
-      event.preventDefault();
-
-      const form = document.getElementById('productForm');
-      const formData = new FormData(form);
-
-      try {
-        const response = await fetch('http://localhost:3000/products', {
-          method: 'POST',
-          headers: {
-            Authorization: 'Bearer YOUR_JWT_TOKEN',
-          },
-          body: formData,
-        });
-
-        if (!response.ok) {
-          throw new Error('Failed to add product');
-        }
-
-        const result = await response.json();
-        console.log('Product added:', result);
-        alert('Product added successfully!');
-      } catch (error) {
-        console.error('Error:', error);
-        alert('Failed to add product');
-      }
-    });
 });

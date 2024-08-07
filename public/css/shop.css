@@ -6,16 +6,15 @@ body{
 #social-media{
     margin: 10px 0;
     border-radius: 10px;
-    margin-right: 70px;
-    
+    margin-top: 5px;    
 }
 #social-media img {
-    width: 20px;
+    width: auto;
 }
 
 header {
     display: flex;
-    justify-content: flex-end;
+    justify-content: flex-start;
     padding: 10px;
     background-color: #f8f9fa;
 }
@@ -27,7 +26,7 @@ header {
 }
 
 .dropbtn {
-    background-color: rgba(62, 6, 136);
+    background-color: rgb(151, 119, 194);
     color: white;
     padding: 5px;
     font-size: 10px;
@@ -64,13 +63,33 @@ header {
 .dropdown:hover .dropbtn {
     background-color: #e0e0e0;
 }
+.login-detail {
+    margin-left: 10px;
+    font-size: 10px;
+    margin-top: 5px;
+}
+.login-detail a{
+    text-decoration: none;
+}
+.signup {
+    background-color: rgb(151, 119, 194);
+    color: white;
+    padding: 5px;
+    border-radius: 5px;
+}
+.login {
+    background-color: rgb(151, 119, 194);
+    color: white;
+    padding: 5px;
+    border-radius: 5px;
+}
 
 #logo {
     display: flex;
 }
 .search-container {
     position: relative;
-    width: 50%; 
+    width: 100%; 
     left: 20px;
 }
 
@@ -257,15 +276,25 @@ section {
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    border: 1px solid #faf9f9;
+    border: 1px solid #fafafa;
     border-radius: 8px;
     overflow: visible;
     width: calc(33.333% - 10px); /* Three cards per row, adjust as needed */
     max-width: 400px;
     transition: transform 0.3s ease;
     margin-bottom: 10px;
+    /* height: 100%; */
+}
+.card-content .old-price1 {
+    font-size: 10px;
+    text-decoration: line-through;
+    margin-right: 5px;
 }
 
+.card-content .new-price1 {
+    font-size: 15px;
+    color: red;
+}
 .card img {
     width: 100%;
     height: auto;
@@ -296,7 +325,7 @@ section {
     display: block;
     width: 100%;
     padding: 5px;
-    margin-top: 10px;
+    /* margin-top: 10px; */
     background-color: #f5973f;
     color: white;
     border: none;
@@ -432,7 +461,7 @@ h4 {
 
 .text-content .new-price {
     font-size: 12px;
-    color: #f5973f;
+    color: red;
 }
 .text-content h4 {
     display: flex;
@@ -459,6 +488,7 @@ h4 {
 .sub-banner {
     position: relative;
 }
+
 
 .sub-banner img {
     width: 100%;
@@ -500,6 +530,7 @@ h4 {
 }
 
 .banner-content h4 {
+    text-align: center;
     font-size: 15px;
     margin: 5px 0;
 }
@@ -512,6 +543,11 @@ h4 {
     max-width: 400px;
     width: 80%;
     margin: 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
 }
 
 .about h2 {
@@ -559,49 +595,47 @@ h4 {
     background-color: #4b4a4d;
     border-radius: 10px;
     color: rgb(158, 157, 157);
-}
+    margin-bottom: 30px;
 
+}
+.About-us a {
+    color: #ddd;
+    line-height: 2.0;
+    font-size: 10px;
+    text-decoration: none;
+}
 .About-us h3 {
     text-align: center;
-    color: #b48253;
+    color: #afaba6;
 }
 .About-us h4{
     font-size: 8px;
     margin: 10px 10px;
+    color: #ddd;
 }
-.brand {
-    border-right: 1px solid rgba(168, 9, 207, 0.2); /* Add vertical line */
+
+.Discover {
+    display: flex;
+    flex-direction: column;
+    margin-left: 10px;
+    width: 90px;
+    border-right: 1px solid rgba(138, 136, 139, 0.2);
+    border-radius: 30px;
 
 }
-/* https://wbj6wsqs-3000.uks1.devtunnels.ms/ */
+.About {
+    display: flex;
+    flex-direction: column;
+    margin-left: 110px;
+    margin-top: -165px;
+    width: 65px;
+    border-radius: 30px;
+    border-right: 1px solid rgba(138, 136, 139, 0.2); /* Add vertical line */
 
-
-@media (min-width: 400px) {
-    
-    
-} 
-
-
-
-
-
-
-
-
-
-
-
-/* Add this to your CSS */
-/* @media (min-width: 600px) {
-    #new-arrivals {
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-
-    .card {
-        margin: 10px;
-        flex: 1 1 calc(33.333% - 20px); /* Three cards per row with some margin */
-        /* max-width: calc(33.333% - 20px); */
-    /*}
-}  */
+}
+.Resources {
+    display: flex;
+    flex-direction: column;
+    margin-left: 190px;
+    margin-top: -167px;
+}
